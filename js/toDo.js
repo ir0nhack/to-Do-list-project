@@ -1,12 +1,12 @@
 /* JS file for todo.html */
 document.getElementById("taskName").addEventListener("keypress", addToList);
-
+document.getElementById("addTask").addEventListener("click", addToList);
 
 /*
 Función que añade un elemento lista a la ul
 */
 function addToList(e){
-    if(e.keyCode === 13){
+    if(e.keyCode === 13 | this.id === "addTask"){
     	//listElement = texto contenido en el input de id taskName
         listElement = document.getElementById("taskName").value;
         //ul es la lista desordenada con id=list
@@ -78,7 +78,7 @@ function removeDone(){
 function progress(){
 	var taskList = document.getElementsByClassName("list-group-item");
 	var taskListDone = document.getElementsByClassName("list-group-item-success");
-	var percent = taskListDone.length *100 / taskList.length
+	var percent = parseInt(taskListDone.length *100 / taskList.length);
 
 	document.getElementById("progressbar").setAttribute("style","width: "+percent+"%;")
 	document.getElementById("progressbar").innerHTML = percent + "%";
